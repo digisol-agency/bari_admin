@@ -20,6 +20,9 @@
 
     <!-- Customisation by digisol -->
     <link href="{{ url_for('static', filename='css/' + 'main.css') }}" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
 
   <body>
@@ -50,14 +53,22 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron" style="margin-bottom: 0; border-bottom: 1px solid #aaa;">
         <div class="container">
-          <h1 class="display-3">Экспорт</h1>
+          <h1 class="display-3">Экспорт
+            <i class="fas fa-database"></i>
+            <i class="fas fa-long-arrow-alt-right"></i>
+            <i class="fas fa-file-excel"></i>
+          </h1>
           <p>Загрузить все товары с базы данных в Google Spreadsheet.</p>
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Экспортировать &raquo;</a></p>
         </div>
       </div>
       <div class="jumbotron whrighty">
         <div class="container">
-          <h1 class="display-3">Импорт</h1>
+          <h1 class="display-3">Импорт
+            <i class="fas fa-database"></i>
+            <i class="fas fa-long-arrow-alt-left"></i>
+            <i class="fas fa-file-excel"></i>
+          </h1>
           <p>Загрузить все товары с Google Spreadsheet в базу данных.</p>
           <p><a class="btn btn-success btn-lg" href="#" role="button">&laquo; Импортировать</a></p>
         </div>
@@ -68,6 +79,16 @@
       <p>&copy; Bari 2019</p>
       <p>Proudly made by <a href="https://digisol.agency/">digisol.agency</a></p>
     </footer>
+
+    <style>
+      .fa-database{
+        color: #007bff;
+      }
+
+      .fa-file-excel{
+        color: #218838;
+      }
+    </style>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

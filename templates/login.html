@@ -10,7 +10,6 @@
 
     <title>Bari Stock Manager</title>
 
-
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,6 +19,18 @@
   </head>
 
   <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4" style="margin: 0 auto;">
+          {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
       <form method="POST" action="">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
@@ -55,10 +66,13 @@
                   {{ form.remember.label(class="form-check-label") }}
               </div>
           </fieldset>
-          <div class="form-group">
-              {{ form.submit(class="btn btn-outline-info") }}
+          <div class="form-group" style="text-align: center;">
+              {{ form.submit(class="btn btn-outline-info", style="padding: 15px 40px;") }}
           </div>
       <hr>
       </form>
+        </div>
+      </div>
+    </div>  
   </body>
 </html>

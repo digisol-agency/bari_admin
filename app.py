@@ -60,7 +60,7 @@ def login():
                 print(str(user) + ' logged in', 'green')
                 return redirect(url_for('index'))
             else:
-                flash('Неправильный login или пароль!', 'danger')
+                flash('Неправильный логин или пароль!', 'danger')
                 return redirect(url_for('login'))
     return render_template('login.html', form=form)
 
