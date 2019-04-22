@@ -59,7 +59,7 @@
             <i class="fas fa-file-excel"></i>
           </h1>
           <p>Загрузить все товары с базы данных в Google Spreadsheet.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Экспортировать &raquo;</a></p>
+          <p><a class="btn btn-primary btn-lg" href="#" id="export" role="button">Экспортировать &raquo;</a></p>
         </div>
       </div>
       <div class="jumbotron whrighty">
@@ -70,7 +70,7 @@
             <i class="fas fa-file-excel"></i>
           </h1>
           <p>Загрузить все товары с Google Spreadsheet в базу данных.</p>
-          <p><a class="btn btn-success btn-lg" href="#" role="button">&laquo; Импортировать</a></p>
+          <p><a class="btn btn-success btn-lg" href="#" id="import" role="button">&laquo; Импортировать</a></p>
         </div>
       </div>
     </main>
@@ -93,9 +93,32 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="{{ url_for('static', filename='js/' + 'popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/' + 'bootstrap.min.js') }}"></script>
+
+    <script type=text/javascript>
+        $(function() {
+          $('a#export').bind('click', function() {
+            $.getJSON('/export',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+
+        $(function() {
+          $('a#import').bind('click', function() {
+            $.getJSON('/import',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+    </script>
   </body>
 </html>
