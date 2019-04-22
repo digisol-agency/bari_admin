@@ -58,7 +58,6 @@ def login():
             user = User.query.filter_by(username=form.username.data.lower()).first()
             if user and user.password == form.password.data:
                 login_user(user, remember=form.remember.data)
-                print(str(user) + ' logged in', 'green')
                 return redirect(url_for('index'))
             else:
                 flash('Неправильный логин или пароль!', 'danger')
