@@ -32,8 +32,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Войти')
 
 
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -67,19 +65,10 @@ def login():
     return render_template('login.html', form=form)
 
 
-
-
-
-
-    user = User.query.filter_by(username="admin").first()
-    login_user(user)
-    return render_template("login.html")
-
 @app.route('/logout')
 def logout():
     logout_user()
-    return "user loged out"
-
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
