@@ -5,7 +5,7 @@ from flask_login import LoginManager, UserMixin, login_user, \
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Email
-# from wpstocker import export_products, update_products, get_list_of_rows
+from wpstocker import export_products, update_products, get_list_of_rows
 
 app = Flask(__name__)
 
@@ -73,16 +73,16 @@ def logout():
 
 @app.route('/export')
 def exporter():
-    # export_products()
-    print("exporting")
+    export_products()
+    # print("exporting")
     return "nothing"
 
 @app.route('/import')
 def importer():
-    # update_products(get_list_of_rows())
-    print("importing")
+    update_products(get_list_of_rows())
+    # print("importing")
     return "nothing"
 
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(host="0.0.0.0")
