@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <!-- <link rel="icon" href="../../../../favicon.ico"> -->
 
     <title>Bari Stock Manager</title>
 
@@ -49,6 +49,9 @@
     </nav>
 
     <main role="main">
+      <div class="alert alert-success" id="messi" role="alert" style="text-align: center; margin: 0; display: none;">
+        ALERT TEST
+      </div>
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron" style="margin-bottom: 0; border-bottom: 1px solid #aaa;">
@@ -80,6 +83,7 @@
       <p>Proudly made by <a href="https://digisol.agency/">digisol.agency</a></p>
     </footer>
 
+
     <style>
       .fa-database{
         color: #007bff;
@@ -88,6 +92,7 @@
       .fa-file-excel{
         color: #218838;
       }
+
     </style>
 
     <!-- Bootstrap core JavaScript
@@ -102,9 +107,17 @@
     <script type=text/javascript>
         $(function() {
           $('a#export').bind('click', function() {
+            $('a#export').addClass('disabled');
             $.getJSON('/export',
-                function(data) {
-              //do nothing
+                function(json) {
+                  console.log( "JSON Data: " + json.message);
+                  $('a#export').removeClass('disabled');
+                  if (json.message == "done"){
+                    $("#messi").removeClass("alert-danger").addClass("alert-success").text("Экспорт прошел успешно!").show()
+                  }
+                  else{
+                    $("#messi").removeClass("alert-success").addClass("alert-danger").text("Ошибка экспорта!").show()
+                  }
             });
             return false;
           });
@@ -112,9 +125,17 @@
 
         $(function() {
           $('a#import').bind('click', function() {
+            $('a#import').addClass('disabled');
             $.getJSON('/import',
-                function(data) {
-              //do nothing
+                function(json) {
+                  console.log( "JSON Data: " + json.message);
+                  $('a#import').removeClass('disabled');
+                  if (json.message == "done"){
+                    $("#messi").removeClass("alert-danger").addClass("alert-success").text("Импорт прошел успешно!").show()
+                  }
+                  else{
+                    $("#messi").removeClass("alert-success").addClass("alert-danger").text("Ошибка импорта!").show()
+                  }
             });
             return false;
           });

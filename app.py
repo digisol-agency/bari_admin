@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, flash, redirect, abort
+from flask import Flask, render_template, url_for, flash, redirect, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, \
                         login_required, current_user, logout_user
@@ -73,15 +73,21 @@ def logout():
 
 @app.route('/export')
 def exporter():
-    export_products()
-    # print("exporting")
-    return "nothing"
+    try:
+        export_products()
+        success = {"message": "done"}
+    except:
+        success = {"message": "error"}
+    return jsonify(success)
 
 @app.route('/import')
 def importer():
-    update_products(get_list_of_rows())
-    # print("importing")
-    return "nothing"
+    try:
+        update_products(get_list_of_rows())
+        success = {"message": "done"}
+    except:
+        success = {"message": "error"}
+    return jsonify(success)
 
 
 if __name__ == "__main__":
